@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" fill="none">
+  <defs>
+    <linearGradient id="ground" x1="80" y1="44" x2="1090" y2="710" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#242820"/><stop offset=".54" stop-color="#171a16"/><stop offset="1" stop-color="#10120f"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientTransform="matrix(344 0 0 344 832 354)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CEFF45" stop-opacity=".14"/><stop offset="1" stop-color="#CEFF45" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="core" x1="714" y1="248" x2="925" y2="483" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CEFF45" stop-opacity=".15"/><stop offset="1" stop-color="#CEFF45" stop-opacity=".025"/>
+    </linearGradient>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M44 0H0v44" stroke="#E7E8D9" stroke-opacity=".035"/>
+    </pattern>
+  </defs>
+  <path fill="url(#ground)" d="M0 0h1200v760H0z"/>
+  <path fill="url(#grid)" d="M0 0h1200v760H0z"/>
+  <circle cx="835" cy="365" r="344" fill="url(#halo)"/>
+  <path d="M0 660h1200" stroke="#E7E8D9" stroke-opacity=".09"/>
+  <text x="72" y="86" fill="#B9C19D" font-family="monospace" font-size="13" letter-spacing="3">PERSONAL AI  /  PRIVATE DEVELOPMENT</text>
+  <path d="M72 112h118" stroke="#CEFF45" stroke-opacity=".7"/>
+  <text x="66" y="480" fill="#F1EFE7" font-family="Georgia,serif" font-size="82" letter-spacing="-4">A.R.C.H.I.E.</text>
+  <text x="75" y="522" fill="#AEB0A5" font-family="monospace" font-size="11" letter-spacing="2">A PERSONAL COMPUTING COMPANION</text>
+  <text x="75" y="690" fill="#8C9083" font-family="monospace" font-size="10" letter-spacing="1.7">PRIVATE BY DESIGN  ·  PERSONAL SYSTEM</text>
+  <g stroke="#CEFF45" stroke-opacity=".38" stroke-width="1.3">
+    <path d="m830 365 150-116 83 77-73 150-150 65-116-105 27-149z"/>
+    <path d="m830 365 160 111M830 365l-79-78m79 78 233-39m-233 39 83-116m-83 116-89 171m239-287-6 188m89-111-89-77" stroke-opacity=".2"/>
+    <circle cx="830" cy="365" r="163" stroke-dasharray="2 9" stroke-opacity=".36"/>
+    <circle cx="830" cy="365" r="207" stroke-opacity=".12"/>
+  </g>
+  <circle cx="830" cy="365" r="109" fill="url(#core)" stroke="#CEFF45" stroke-opacity=".68"/>
+  <circle cx="830" cy="365" r="83" stroke="#E7E8D9" stroke-opacity=".12"/>
+  <path d="m830 310-38 110h16l9-28h27l9 28h16l-39-110Zm-8 68 9-29 10 29h-19Z" fill="#EAF2D1"/>
+  <circle cx="830" cy="365" r="4" fill="#CEFF45"/>
+  <g fill="#CEFF45" stroke="#10120F" stroke-width="6">
+    <circle cx="830" cy="202" r="8"/><circle cx="980" cy="249" r="8"/><circle cx="1063" cy="326" r="8"/>
+    <circle cx="990" cy="476" r="8"/><circle cx="840" cy="541" r="8"/><circle cx="724" cy="436" r="8"/><circle cx="751" cy="287" r="8"/>
+  </g>
+  <g fill="#B8BCA9" font-family="monospace" font-size="9" letter-spacing="1.4">
+    <text x="1005" y="225">INTELLIGENCE</text><text x="1002" y="505">UTILITY</text><text x="675" y="576">PERSONAL</text>
+  </g>
+  <g transform="translate(1090 650)" stroke="#CEFF45" stroke-opacity=".85" stroke-width="1.5">
+    <rect x="0" y="8" width="18" height="14" rx="3"/><path d="M4 8V5a5 5 0 0 1 10 0v3"/>
+  </g>
+</svg>

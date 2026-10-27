@@ -10,21 +10,40 @@
 
   function projectCard(project, index) {
     const reversed = index % 2 === 1 ? " project-reversed" : "";
-    const action = project.url
-      ? `<a class="project-action" href="${escapeHtml(project.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(project.action)} <span aria-hidden="true">↗</span></a>`
-      : `<span class="project-action project-action-muted">${escapeHtml(project.linkStatus)} <span aria-hidden="true">↗</span></span>`;
-    return `<article class="project-card reveal${reversed}" data-project="${escapeHtml(project.number)}">
-      <button class="project-visual visual-${escapeHtml(project.statusType)}" type="button" data-project-details="${escapeHtml(project.number)}" aria-label="Open ${escapeHtml(project.name)} project details">
+    const isPrivate = project.visibility === "private";
+    const visual = isPrivate
+      ? `<div class="project-visual visual-private project-visual-static" role="img" aria-label="${escapeHtml(project.imageAlt)}">
+        <img src="${escapeHtml(project.image)}" alt="" width="1200" height="760" loading="lazy" />
+        <span class="visual-overline mono">Personal AI / Private development</span>
+      </div>`
+      : `<button class="project-visual visual-${escapeHtml(project.statusType)}" type="button" data-project-details="${escapeHtml(project.number)}" aria-label="Open ${escapeHtml(project.name)} project details">
         <img src="${escapeHtml(project.image)}" alt="${escapeHtml(project.imageAlt)}" width="1200" height="760" loading="lazy" />
         <span class="visual-overline mono">Original project illustration</span>
         <span class="visual-open" aria-hidden="true">↗</span>
-      </button>
+      </button>`;
+    const status = isPrivate
+      ? `<span class="project-status private"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3.5" y="8.5" width="13" height="9" rx="2"/><path d="M6.5 8.5V6a3.5 3.5 0 0 1 7 0v2.5"/></svg>${escapeHtml(project.status)}</span>`
+      : `<span class="project-status ${escapeHtml(project.statusType)}"><i></i>${escapeHtml(project.status)}</span>`;
+    const action = project.url
+      ? `<a class="project-action" href="${escapeHtml(project.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(project.action)} <span aria-hidden="true">↗</span></a>`
+      : project.linkStatus
+        ? `<span class="project-action project-action-muted">${escapeHtml(project.linkStatus)} <span aria-hidden="true">↗</span></span>`
+        : "";
+    const projectLinks = isPrivate
+      ? `<div class="project-private-note" id="project-private-note-${escapeHtml(project.number)}"><p class="mono">PRIVATE PROJECT</p><p>Personal system · Access restricted</p></div>`
+      : `<div class="project-links">${action}<button class="details-link" type="button" data-project-details="${escapeHtml(project.number)}">Project notes <span aria-hidden="true">＋</span></button></div>`;
+    const supportingText = project.supportingText
+      ? `<p class="project-supporting"${isPrivate ? ` id="project-supporting-${escapeHtml(project.number)}"` : ""}>${escapeHtml(project.supportingText)}</p>`
+      : "";
+    return `<article class="project-card reveal${reversed}" data-project="${escapeHtml(project.number)}"${isPrivate ? ` aria-labelledby="project-title-${escapeHtml(project.number)}" aria-describedby="project-description-${escapeHtml(project.number)} project-supporting-${escapeHtml(project.number)} project-private-note-${escapeHtml(project.number)}"` : ""}>
+      ${visual}
       <div class="project-info">
-        <div class="project-meta mono"><span>PROJECT ${escapeHtml(project.number)}</span><span class="project-status ${escapeHtml(project.statusType)}"><i></i>${escapeHtml(project.status)}</span></div>
+        <div class="project-meta mono"><span>PROJECT ${escapeHtml(project.number)}</span>${status}</div>
         <p class="project-category mono">${escapeHtml(project.category)}</p>
-        <h3>${escapeHtml(project.name)}</h3>
-        <p class="project-description">${escapeHtml(project.description)}</p>
-        <div class="project-links">${action}<button class="details-link" type="button" data-project-details="${escapeHtml(project.number)}">Project notes <span aria-hidden="true">＋</span></button></div>
+        <h3${isPrivate ? ` id="project-title-${escapeHtml(project.number)}"` : ""}>${escapeHtml(project.name)}</h3>
+        <p class="project-description"${isPrivate ? ` id="project-description-${escapeHtml(project.number)}"` : ""}>${escapeHtml(project.description)}</p>
+        ${supportingText}
+        ${projectLinks}
       </div>
     </article>`;
   }
@@ -33,7 +52,7 @@
 
   function openDetails(number) {
     const project = projects.find((item) => item.number === number);
-    if (!project) return;
+    if (!project || project.visibility === "private") return;
     const detailRows = project.details.map(([label, copy]) => `<section class="detail-row"><h3>${escapeHtml(label)}</h3><p>${escapeHtml(copy)}</p></section>`).join("");
     const external = project.url ? `<a class="button button-lime dialog-action" href="${escapeHtml(project.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(project.action)} <span aria-hidden="true">↗</span></a>` : "";
     dialogBody.innerHTML = `<div class="dialog-heading"><p class="eyebrow mono">PROJECT ${escapeHtml(project.number)} · ${escapeHtml(project.category)}</p><h2 id="dialog-title">${escapeHtml(project.name)}</h2><p class="dialog-summary">${escapeHtml(project.description)}</p><span class="dialog-status ${escapeHtml(project.statusType)}"><i></i>${escapeHtml(project.status)}</span></div>

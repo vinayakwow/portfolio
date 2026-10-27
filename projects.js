@@ -28,16 +28,13 @@ window.PORTFOLIO_PROJECTS = [
     outcome: "Live project · fine-dining restaurant concept"
   },
   {
-    number: "03", name: "Blake Estate", accent: "Blake Estate", category: "Fashion · Brand website",
-    status: "In development", statusType: "development", description: "An editorial website direction for a friend’s clothing brand, with the brand and collection at its center.",
-    image: "./assets/blake-estate.svg", imageAlt: "Illustrative editorial fashion composition for Blake Estate, an in-development project.",
-    url: null, action: null, linkStatus: "Preview coming soon",
-    details: [
-      ["Overview", "A website project for a friend’s clothing brand."],
-      ["Direction", "Fashion-focused, editorial, and brand-oriented."],
-      ["Current status", "In development. A project link will be added here when a real preview is available."]
-    ],
-    outcome: "In development · preview coming soon"
+    number: "03", name: "A.R.C.H.I.E.", accent: "A.R.C.H.I.E.", category: "Personal AI · Private Project",
+    status: "Private project", statusType: "private", visibility: "private",
+    description: "My personal AI assistant, built to bring intelligence, utility, and a more personalised computing experience into one system.",
+    supportingText: "A private, evolving AI project designed around my own workflow. Built as a personal assistant, with room to grow into a more capable everyday computing companion.",
+    image: "./assets/archie.svg", imageAlt: "Abstract connected-node illustration for A.R.C.H.I.E., a private personal AI project.",
+    url: null, action: null, linkStatus: null, details: [],
+    outcome: "Private project · Access restricted"
   },
   {
     number: "04", name: "Barkat", accent: "Barkat", category: "Food · Cloud-kitchen ordering",
